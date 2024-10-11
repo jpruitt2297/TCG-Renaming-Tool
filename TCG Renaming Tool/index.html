@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCG Renaming Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <h1>TCG Renaming Tool</h1>
+    <form id="modForm">
+        <label for="mesh">Select Mesh (.obj):</label>
+        <input type="file" id="mesh" accept=".obj" required><br><br>
+
+        <label for="texture">Select Texture (.png):</label>
+        <input type="file" id="texture" accept=".png" required><br><br>
+
+        <label for="icon">Select Icon (.png):</label>
+        <input type="file" id="icon" accept=".png" required><br><br>
+
+        <label for="name">Select Name (.txt):</label>
+        <input type="file" id="name" accept=".txt" required><br><br>
+
+        <label for="modSelect">Apply mod to:</label>
+        <select id="modSelect" required>
+            <option value="Pigni">Pigni</option>
+            <option value="Nanomite">Nanomite</option>
+            <option value="Ministar">Ministar</option>
+            <option value="Nocti">Nocti</option>
+            <option value="Blazoar">Blazoar</option>
+            <option value="Kingstar">Kingstar</option>
+            <option value="Bonfiox">Bonfiox</option>
+            <option value="ToonZ">ToonZ</option>
+        </select><br><br>
+
+        <button type="button" id="generateBtn">Rename Mod Files</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
+
