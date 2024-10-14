@@ -6,37 +6,143 @@
     <title>TCG Renaming Tool</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script>
+        // Function to update the mod selection options based on the selected category
+        function updateModOptions(modNumber) {
+            const categorySelect = document.getElementById(`categorySelect${modNumber}`);
+            const modSelect = document.getElementById(`modSelect${modNumber}`);
+            modSelect.innerHTML = ''; // Clear existing options
+
+            // Determine the selected category
+            const selectedCategory = categorySelect.value;
+
+            // Add options based on the selected category
+            if (selectedCategory === 'Plushies') {
+                modSelect.innerHTML = `
+                    <option value="Pigni">Pigni</option>
+                    <option value="Nanomite">Nanomite</option>
+                    <option value="Ministar">Ministar</option>
+                    <option value="Nocti">Nocti</option>
+                    <option value="Blazoar">Blazoar</option>
+                    <option value="Kingstar">Kingstar</option>
+                    <option value="Bonfiox">Bonfiox</option>
+                    <option value="ToonZ">ToonZ</option>
+                `;
+            } else if (selectedCategory === 'Figurines') {
+                modSelect.innerHTML = `
+                    <option value="Burpig">Burpig</option>
+                    <option value="Decimite">Decimite</option>
+                    <option value="Trickstar">Trickstar</option>
+                    <option value="Lunight">Lunight</option>
+                    <option value="Inferhog">Inferhog</option>
+                    <option value="Meganite">Meganite</option>
+                    <option value="Princestar">Princestar</option>
+                    <option value="Vampicant">Vampicant</option>
+                    <option value="Giganite">Giganite</option>
+                    <option value="Dracunix">Dracunix</option>
+                    <option value="Drilceros">Drilceros</option>
+                `;
+            }
+        }
+    </script>
+    <style>
+        body {
+            text-align: center; /* Center text in the body */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .mod-section {
+            width: 45%; /* Adjust width as necessary */
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px; /* Space below the title */
+        }
+        #generateBtn {
+            font-size: 16px; /* Increase font size */
+            padding: 10px 20px; /* Add padding for a larger button */
+            margin-top: 20px; /* Space above the button */
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none; /* Remove default border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s; /* Smooth transition for hover */
+        }
+        #generateBtn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
 </head>
 <body>
     <h1>TCG Renaming Tool</h1>
-    <form id="modForm">
-        <label for="mesh">Select Mesh (.obj):</label>
-        <input type="file" id="mesh" accept=".obj" required><br><br>
+    <div class="container">
+        <div class="mod-section">
+            <h2>Mod 1</h2>
+            <form id="modForm1">
+                <label for="mesh1">Select Mesh (.obj):</label>
+                <input type="file" id="mesh1" accept=".obj" required><br><br>
 
-        <label for="texture">Select Texture (.png):</label>
-        <input type="file" id="texture" accept=".png" required><br><br>
+                <label for="texture1">Select Texture (.png):</label>
+                <input type="file" id="texture1" accept=".png" required><br><br>
 
-        <label for="icon">Select Icon (.png):</label>
-        <input type="file" id="icon" accept=".png" required><br><br>
+                <label for="icon1">Select Icon (.png):</label>
+                <input type="file" id="icon1" accept=".png" required><br><br>
 
-        <label for="name">Select Name (.txt):</label>
-        <input type="file" id="name" accept=".txt" required><br><br>
+                <label for="name1">Select Name (.txt):</label>
+                <input type="file" id="name1" accept=".txt" required><br><br>
 
-        <label for="modSelect">Apply mod to:</label>
-        <select id="modSelect" required>
-            <option value="Pigni">Pigni</option>
-            <option value="Nanomite">Nanomite</option>
-            <option value="Ministar">Ministar</option>
-            <option value="Nocti">Nocti</option>
-            <option value="Blazoar">Blazoar</option>
-            <option value="Kingstar">Kingstar</option>
-            <option value="Bonfiox">Bonfiox</option>
-            <option value="ToonZ">ToonZ</option>
-        </select><br><br>
+                <label for="categorySelect1">Select Category:</label>
+                <select id="categorySelect1" onchange="updateModOptions(1)" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Plushies">Plushies</option>
+                    <option value="Figurines">Figurines</option>
+                </select><br><br>
 
-        <button type="button" id="generateBtn">Rename Mod Files</button>
-    </form>
+                <label for="modSelect1">Apply mod to:</label>
+                <select id="modSelect1" required>
+                    <option value="" disabled selected>Select a category first</option>
+                </select><br><br>
+            </form>
+        </div>
+
+        <div class="mod-section">
+            <h2>Mod 2</h2>
+            <form id="modForm2">
+                <label for="mesh2">Select Mesh (.obj):</label>
+                <input type="file" id="mesh2" accept=".obj" required><br><br>
+
+                <label for="texture2">Select Texture (.png):</label>
+                <input type="file" id="texture2" accept=".png" required><br><br>
+
+                <label for="icon2">Select Icon (.png):</label>
+                <input type="file" id="icon2" accept=".png" required><br><br>
+
+                <label for="name2">Select Name (.txt):</label>
+                <input type="file" id="name2" accept=".txt" required><br><br>
+
+                <label for="categorySelect2">Select Category:</label>
+                <select id="categorySelect2" onchange="updateModOptions(2)" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Plushies">Plushies</option>
+                    <option value="Figurines">Figurines</option>
+                </select><br><br>
+
+                <label for="modSelect2">Apply mod to:</label>
+                <select id="modSelect2" required>
+                    <option value="" disabled selected>Select a category first</option>
+                </select><br><br>
+            </form>
+        </div>
+    </div>
+    
+    <button type="button" id="generateBtn">Rename Mod Files</button>
     <script src="script.js"></script>
 </body>
 </html>
-
