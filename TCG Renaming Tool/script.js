@@ -4,6 +4,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     const textureFile1 = document.getElementById('texture1').files[0];
     const iconFile1 = document.getElementById('icon1').files[0];
     const nameFile1 = document.getElementById('name1').files[0];
+    const category1 = document.getElementById('categorySelect1').value;
     const modType1 = document.getElementById('modSelect1').value;
 
     // Gather files and mod types for Mod 2
@@ -11,14 +12,58 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     const textureFile2 = document.getElementById('texture2').files[0];
     const iconFile2 = document.getElementById('icon2').files[0];
     const nameFile2 = document.getElementById('name2').files[0];
+    const category2 = document.getElementById('categorySelect2').value;
     const modType2 = document.getElementById('modSelect2').value;
 
     // Check if all files and mod types are selected for both mods
-    if ((!meshFile1 || !textureFile1 || !iconFile1 || !nameFile1 || !modType1) &&
-        (!meshFile2 || !textureFile2 || !iconFile2 || !nameFile2 || !modType2)) {
+    /* if ((!meshFile1 || !textureFile1 || !iconFile1 || !nameFile1 || !modType1) && (!meshFile2 || !textureFile2 || !iconFile2 || !nameFile2 || !modType2)) {
         alert('Please select all files and a mod type for at least one mod.');
         return;
+    } */
+
+    // Checks if neccessary files are selected for Mod 1
+    if (category1 == 'Playmats') {
+        switch (modType1) {
+            case 'Dracunix_No_Name':
+                if (!textureFile1 || !iconFile1) {
+                    alert('Mod 1\'s selected mod application requires texture and icon files to be selected.');
+                    return;
+                }
+                break;
+            default:
+                if (!textureFile1 || !iconFile1 || !nameFile1 || !modType1) {
+                    alert('Mod 1\'s selected category requires texture, icon, and name files to be selected.');
+                    return;
+                }
+                break;
+        }
     }
+    else if (!meshFile1 || !textureFile1 || !iconFile1 || !nameFile1 || !modType1) {
+        alert('Please select all files and a mod type for Mod 1');
+        return;
+    };
+
+    // Checks if neccessary files are selected for Mod 2
+    if (category2 == 'Playmats') {
+        switch (modType2) {
+            case 'Dracunix_No_Name':
+                if (!textureFile2 || !iconFile2) {
+                    alert('Mod 2\'s selected mod application requires texture and icon files to be selected.');
+                    return;
+                }
+                break;
+            default:
+                if (!textureFile2 || !iconFile2 || !nameFile2 || !modType2) {
+                    alert('Mod 2\'s selected category requires texture, icon, and name files to be selected.');
+                    return;
+                }
+                break;
+        }
+    }
+    else if (!meshFile2 || !textureFile2 || !iconFile2 || !nameFile2 || !modType2) {
+        alert('Please select all files and a mod type for Mod 2');
+        return;
+    };
 
     const zip = new JSZip();
     const modNames = {
@@ -43,36 +88,64 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
         Giganite: { mesh: 'GolemD_Mesh.obj', texture: 'T_GolemD.png', icon: 'Icon_Toy_GolemD.png', name: 'Giganite Statue_NAME.txt' },
         Dracunix: { mesh: 'BatD_Mesh.obj', texture: 'T_BatD.png', icon: 'Icon_Toy_BatD.png', name: 'Dracunix Figurine_NAME.txt' },
         Drilceros: { mesh: 'Beetle_Mesh.obj', texture: 'T_Beetle.png', icon: 'Icon_Toy_Beetle.png', name: 'Drilceros Action Figure_NAME.txt' },
+        // Playmats
+        Clamigo: { texture: 'T_PlayMat1.png', icon: 'Icon_Playmat1.png', name: 'Playmat (Clamigo)_NAME.txt' },
+        Dracunix: { texture: 'T_PlayMat5.png', icon: 'Icon_Playmat5.png', name: 'Playmat (Dracunix)_NAME.txt' },
+        Dracunix_No_Name: { texture: 'T_PlayMat15.png', icon: 'Icon_Playmat15.png'},
+        Drakon: { texture: 'T_PlayMat3.png', icon: 'Icon_Playmat3.png', name: 'Playmat (Drakon)_NAME.txt' },
+        Drilceros: { texture: 'T_PlayMat2b.png', icon: 'Icon_Playmat2b.png', name: 'Playmat (Drilceros)_NAME.txt' },
+        Duel: { texture: 'T_PlayMat2.png', icon: 'Icon_Playmat2.png', name: 'Playmat (Duel)_NAME.txt' },
+        Earth: { texture: 'T_PlayMat11.png', icon: 'Icon_Playmat11.png', name: 'Playmat (Earth)_NAME.txt' },
+        Fire: { texture: 'T_PlayMat10.png', icon: 'Icon_Playmat10.png', name: 'Playmat (Fire)_NAME.txt' },
+        GigatronX_Evo: { texture: 'T_PlayMat7.png', icon: 'Icon_Playmat7.png', name: 'Playmat (GigatronX Evo)_NAME.txt' },
+        GigatronX: { texture: 'T_PlayMat16.png', icon: 'Icon_Playmat16.png', name: 'Playmat (GigatronX)_NAME.txt' },
+        Katengu_Black: { texture: 'T_PlayMat17.png', icon: 'Icon_Playmat17.png', name: 'Playmat (Katengu Black)_NAME.txt' },
+        Katengu_White: { texture: 'T_PlayMat18.png', icon: 'Icon_Playmat18.png', name: 'Playmat (Katengu White)_NAME.txt' },
+        Kyrone: { texture: 'T_PlayMat9.png', icon: 'Icon_Playmat9.png', name: 'Playmat (Kyrone)_NAME.txt' },
+        Lunight: { texture: 'T_PlayMat14.png', icon: 'Icon_Playmat14.png', name: 'Playmat (Lunight)_NAME.txt' },
+        Tetramon: { texture: 'T_PlayMat8.png', icon: 'Icon_Playmat8.png', name: 'Playmat (Tetramon)_NAME.txt' },
+        The_Four_Dragons: { texture: 'T_PlayMat4.png', icon: 'Icon_Playmat4.png', name: 'Playmat (The Four Dragons)_NAME.txt' },
+        Water: { texture: 'T_PlayMat13.png', icon: 'Icon_Playmat13.png', name: 'Playmat (Water)_NAME.txt' },
+        Wind: { texture: 'T_PlayMat12.png', icon: 'Icon_Playmat12.png', name: 'Playmat (Wind)_NAME.txt' },
+        Wispo: { texture: 'T_PlayMat6.png', icon: 'Icon_Playmat6.png', name: 'Playmat (Wispo)_NAME.txt' },
     };
 
     // Create directories and add files to the zip for Mod 1
     if (modType1) {
         const selectedNames1 = modNames[modType1];
 
-        const objectsMesh1 = zip.folder('BepinEx/plugins/TextureReplacer/objects_meshes');
-        objectsMesh1.file(selectedNames1.mesh, await readFile(meshFile1));
+        if (category1 !== 'Playmats') {
+            const objectsMesh1 = zip.folder('BepinEx/plugins/TextureReplacer/objects_meshes');
+            objectsMesh1.file(selectedNames1.mesh, await readFile(meshFile1));
+        }
 
         const objectsTextures1 = zip.folder('BepinEx/plugins/TextureReplacer/objects_textures');
         objectsTextures1.file(selectedNames1.texture, await readFile(textureFile1));
         objectsTextures1.file(selectedNames1.icon, await readFile(iconFile1));
-
-        const objectsData1 = zip.folder('BepinEx/plugins/TextureReplacer/objects_data/figurines');
-        objectsData1.file(selectedNames1.name, await readFile(nameFile1));
+        
+        if (modType1 !== 'Dracunix_No_Name') {
+            const objectsData1 = zip.folder('BepinEx/plugins/TextureReplacer/objects_data/figurines');
+            objectsData1.file(selectedNames1.name, await readFile(nameFile1));
+        }
     }
 
     // Create directories and add files to the zip for Mod 2
     if (modType2) {
         const selectedNames2 = modNames[modType2];
 
-        const objectsMesh2 = zip.folder('BepinEx/plugins/TextureReplacer/objects_meshes');
-        objectsMesh2.file(selectedNames2.mesh, await readFile(meshFile2));
+        if (modType2 !== 'Playmats') {
+            const objectsMesh2 = zip.folder('BepinEx/plugins/TextureReplacer/objects_meshes');
+            objectsMesh2.file(selectedNames2.mesh, await readFile(meshFile2))
+        };
 
         const objectsTextures2 = zip.folder('BepinEx/plugins/TextureReplacer/objects_textures');
         objectsTextures2.file(selectedNames2.texture, await readFile(textureFile2));
         objectsTextures2.file(selectedNames2.icon, await readFile(iconFile2));
 
-        const objectsData2 = zip.folder('BepinEx/plugins/TextureReplacer/objects_data/figurines');
-        objectsData2.file(selectedNames2.name, await readFile(nameFile2));
+        if (modType2 !== 'Dracunix_No_Name') {
+            const objectsData2 = zip.folder('BepinEx/plugins/TextureReplacer/objects_data/figurines');
+            objectsData2.file(selectedNames2.name, await readFile(nameFile2));
+        }
     }
 
     // Generate the zip file and trigger download
