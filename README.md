@@ -3,8 +3,12 @@ A simple tool for altering TCG Card Shop Simulator mods.
 
 Forked from [Bobtelington's TCG Renaming Tool](https://github.com/bobtelington/TCG-Renaming-Tool) or [TCG Renaming Tool on Nexus](https://www.nexusmods.com/tcgcardshopsimulator/mods/145).
 
-Added support for all 19 playmats (as of 10/31/24). Two playmats in-game share the same name file, so there is one selection option that doesn't have a name file requirement.
+### <ins>Changelog:</ins>
+Nov. 9 2024: Support for all 12 comics/manga added
 
+Oct. 31 2024: Added support for all 19 playmats; Two playmats in-game share the same name file, so there is one selection option that doesn't have a name file requirement
+
+### <ins>License:</ins>
 You are free to:
 Share — copy and redistribute the material in any medium or format
 Adapt — remix, transform, and build upon the material
