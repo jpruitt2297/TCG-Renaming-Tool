@@ -22,7 +22,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     } */
 
     // Checks if neccessary files are selected for Mod 1
-    if (category1 == 'Playmats') {
+    if ((category1 == 'Playmats') || (category1 == 'Comics')) {
         switch (modType1) {
             case 'Dracunix_No_Name':
                 if (!textureFile1 || !iconFile1) {
@@ -44,7 +44,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     };
 
     // Checks if neccessary files are selected for Mod 2
-    if (category2 == 'Playmats') {
+    if ((category2 == 'Playmats') || (category2 == 'Comics')) {
         switch (modType2) {
             case 'Dracunix_No_Name':
                 if (!textureFile2 || !iconFile2) {
@@ -108,13 +108,26 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
         Water: { texture: 'T_PlayMat13.png', icon: 'Icon_Playmat13.png', name: 'Playmat (Water)_NAME.txt' },
         Wind: { texture: 'T_PlayMat12.png', icon: 'Icon_Playmat12.png', name: 'Playmat (Wind)_NAME.txt' },
         Wispo: { texture: 'T_PlayMat6.png', icon: 'Icon_Playmat6.png', name: 'Playmat (Wispo)_NAME.txt' },
+        // Comics
+        Comic1: { texture: 'T_Manga_1.png', icon: 'Icon_Manga1.png', name: 'Comic Vol 1_NAME.txt' },
+        Comic2: { texture: 'T_Manga_2.png', icon: 'Icon_Manga2.png', name: 'Comic Vol 2_NAME.txt' },
+        Comic3: { texture: 'T_Manga_3.png', icon: 'Icon_Manga3.png', name: 'Comic Vol 3_NAME.txt' },
+        Comic4: { texture: 'T_Manga_4.png', icon: 'Icon_Manga4.png', name: 'Comic Vol 4_NAME.txt' },
+        Comic5: { texture: 'T_Manga_5.png', icon: 'Icon_Manga5.png', name: 'Comic Vol 5_NAME.txt' },
+        Comic6: { texture: 'T_Manga_6.png', icon: 'Icon_Manga6.png', name: 'Comic Vol 6_NAME.txt' },
+        Comic7: { texture: 'T_Manga_7.png', icon: 'Icon_Manga7.png', name: 'Comic Vol 7_NAME.txt' },
+        Comic8: { texture: 'T_Manga_8.png', icon: 'Icon_Manga8.png', name: 'Comic Vol 8_NAME.txt' },
+        Comic9: { texture: 'T_Manga_9.png', icon: 'Icon_Manga9.png', name: 'Comic Vol 9_NAME.txt' },
+        Comic10: { texture: 'T_Manga_10.png', icon: 'Icon_Manga10.png', name: 'Comic Vol 10_NAME.txt' },
+        Comic11: { texture: 'T_Manga_11.png', icon: 'Icon_Manga11.png', name: 'Comic Vol 11_NAME.txt' },
+        Comic12: { texture: 'T_Manga_12.png', icon: 'Icon_Manga12.png', name: 'Comic Vol 12_NAME.txt' },
     };
 
     // Create directories and add files to the zip for Mod 1
     if (modType1) {
         const selectedNames1 = modNames[modType1];
 
-        if (category1 !== 'Playmats') {
+        if (category1 !== ('Playmats' || 'Comics')) {
             const objectsMesh1 = zip.folder('BepinEx/plugins/TextureReplacer/objects_meshes');
             objectsMesh1.file(selectedNames1.mesh, await readFile(meshFile1));
         }
@@ -133,7 +146,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     if (modType2) {
         const selectedNames2 = modNames[modType2];
 
-        if (modType2 !== 'Playmats') {
+        if (modType2 !== ('Playmats' || 'Comics')) {
             const objectsMesh2 = zip.folder('BepinEx/plugins/TextureReplacer/objects_meshes');
             objectsMesh2.file(selectedNames2.mesh, await readFile(meshFile2))
         };
