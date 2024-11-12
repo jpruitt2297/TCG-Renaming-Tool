@@ -4,6 +4,8 @@ A simple tool for altering TCG Card Shop Simulator mods.
 Forked from [Bobtelington's TCG Renaming Tool](https://github.com/bobtelington/TCG-Renaming-Tool) or [TCG Renaming Tool on Nexus](https://www.nexusmods.com/tcgcardshopsimulator/mods/145).
 
 ### <ins>Changelog:</ins>
+Nov. 12 2024: Revised save location of playmats and comics/manga data files to the new TextureReplacer's accessories data folder
+
 Nov. 9 2024: Support for all 12 comics/manga added
 
 Oct. 31 2024: Added support for all 19 playmats; Two playmats in-game share the same name file, so there is one selection option that doesn't have a name file requirement
